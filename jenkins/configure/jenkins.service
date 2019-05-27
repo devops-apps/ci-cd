@@ -1,0 +1,14 @@
+[Unit]
+Description=java server daemon
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/jenkins.pid
+ExecStart=/data/apps/jenkins/bin/catalina.sh start
+ExecStop=/data/apps/jenkins/bin/catalina.sh stop
+ExecStop=/data/webs/jenkins/bin/catalina.sh stop -force
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.targe
